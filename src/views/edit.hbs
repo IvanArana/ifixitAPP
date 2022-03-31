@@ -1,0 +1,88 @@
+<div class="container p-5" style="margin-left: 10%;"> 
+  <div class="col-md-6 card card-body rounded-10 bg-dark text-white" style="align-items: center;">
+    <h3 style="text-align: center;">Service Card 📎</h3>
+    <form action="/tasks/{{task._id}}/edit" method="post">
+      <div class="mb-3">
+        <label for="title" class="form-label"><strong>Customer Name:</strong></label>
+        <label for="title" class="form-label">{{task.title}}</label>
+        {{!-- <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Title"
+          name="title"
+          value="{{task.title}}"
+          autofocus
+        /> --}}
+      </div>
+      <div class="mb-3">
+        <label for="devicename" class="form-label"><strong>Device Name:</strong></label>
+        <label for="devicename" class="form-label">{{task.devicename}}</label>
+        {{!-- <input
+          type="text"
+          class="form-control"
+          id="devicename"
+          placeholder="Device Name"
+          name="devicename"
+          value="{{task.devicename}}"
+        /> --}}
+      </div>
+      {{! fecha de ingreso del dispositivo}}
+      <div class="mb-3">
+        <label for="date" class="form-label"><strong>Date of Admission:</strong></label>
+        <label for="date" class="form-label">{{task.date}}</label>
+      </div>
+
+      {{! fecha de egreso del dispositivo}}
+      <div class="mb-3">
+        <label for="date" class="form-label"><strong>Estimated Egress Date:</strong></label>
+        <label for="date" class="form-label">{{task.dateegress}}</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Problem Description/Diagnostic:</label>
+        <textarea
+          class="form-control"
+          id="description"
+          cols="80"
+          name="description"
+          placeholder="Add a description"
+        >{{task.description}}</textarea>
+      </div>
+      {{! aki empieza los radio bottons }}
+      {{#ifequals task.sexo "Urgent"}}
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sexo" value="Urgent" checked/>
+          <label class="form-check-label" for="flexRadioDefault1">
+            Urgent
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sexo" value="Not Urgent"/>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Not Urgent
+          </label>
+        </div>
+      {{/ifequals}}
+      {{! aki empieza el otro if}}
+      {{#ifequals task.sexo "Not Urgent"}}
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sexo" value="Urgent"/>
+          <label class="form-check-label" for="flexRadioDefault1">
+            Urgent
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sexo" value="NoT Urgent" checked/>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Not Urgent
+          </label>
+        </div>
+      {{/ifequals}}
+
+      {{! aki termina los radio bottons }}
+      <button type="submit" class="btn btn-primary" style="border: #8E05C2; background-color:#8E05C2;">Update</button>
+
+    </form>
+  </div>
+</div> 
